@@ -16,6 +16,7 @@ alias cd="z"
 alias cdi="zi"
 alias lg=lazygit
 alias mux=tmuxinator
+alias ff=fastfetch
 # PS1='[\u@\h \W]\$ '
 
 eval "$(fzf --bash)"
