@@ -7,7 +7,7 @@
 
 [[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
 
-export EDITOR=vim
+export EDITOR=nvim
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
