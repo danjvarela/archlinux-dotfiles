@@ -18,7 +18,6 @@ alias lg=lazygit
 alias mux=tmuxinator
 alias ff=fastfetch
 alias lzd=lazydocker
-alias checkout-empty="git checkout $(git commit-tree $(git hash-object -t tree /dev/null) < /dev/null)"
 # PS1='[\u@\h \W]\$ '
 
 eval "$(fzf --bash)"

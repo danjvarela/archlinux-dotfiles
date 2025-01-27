@@ -1,3 +1,7 @@
+function checkout-empty() {
+  git checkout $(git commit-tree $(git hash-object -t tree /dev/null) < /dev/null)   
+}
+
 function fkill() {
   local pid
   pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
