@@ -8,6 +8,7 @@
 [[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
 
 export EDITOR=nvim
+export GOPATH=$HOME/.go
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
