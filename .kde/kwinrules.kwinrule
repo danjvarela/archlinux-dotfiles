@@ -1,7 +1,7 @@
 [All browsers should be in desktop 2]
 Description=All browsers should be in desktop 2
 clientmachine=localhost
-desktops=aa5a0d38-d907-4279-b3c4-88a24025dc23
+desktops=75ac6b71-312e-4384-94ef-45984fd0cd54
 desktopsrule=2
 title=New tab - Work - Microsoft Edge
 types=1
@@ -11,7 +11,7 @@ wmclassmatch=3
 
 [Dolphin on desktop 3]
 Description=Dolphin on desktop 3
-desktops=a6001a94-b919-4bfc-baad-dca3e94065c9
+desktops=7495899b-39af-4dbe-9e9e-4c814880bdb0
 desktopsrule=2
 title=Downloads — Dolphin
 types=1
@@ -21,7 +21,7 @@ wmclassmatch=1
 
 [Firefox on desktop 2]
 Description=Firefox on desktop 2
-desktops=aa5a0d38-d907-4279-b3c4-88a24025dc23
+desktops=75ac6b71-312e-4384-94ef-45984fd0cd54
 desktopsrule=2
 types=1
 wmclass=firefox
@@ -31,7 +31,7 @@ wmclassmatch=2
 [VSCode (Code-OSS) on Desktop 4]
 Description=VSCode (Code-OSS) on Desktop 4
 clientmachine=localhost
-desktops=cbd3627c-7080-47a0-9731-1685e6d56c65
+desktops=7495899b-39af-4dbe-9e9e-4c814880bdb0
 desktopsrule=2
 title=other_vhosts_access.log - website - Code - OSS
 types=1
