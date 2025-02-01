@@ -8,6 +8,7 @@
 [[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
 
 export PATH=$PATH:~/.local/bin/
+export PATH=$PATH:~/.dotnet/tools
 export EDITOR=nvim
 export GOPATH=$HOME/.go
 
