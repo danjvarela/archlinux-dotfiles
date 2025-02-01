@@ -28,6 +28,14 @@ wmclass=firefox
 wmclasscomplete=true
 wmclassmatch=2
 
+[Remove titlebar for kitty]
+Description=Remove titlebar for kitty
+noborder=true
+noborderrule=2
+types=1
+wmclass=kitty
+wmclassmatch=1
+
 [VSCode (Code-OSS) on Desktop 4]
 Description=VSCode (Code-OSS) on Desktop 4
 clientmachine=localhost
