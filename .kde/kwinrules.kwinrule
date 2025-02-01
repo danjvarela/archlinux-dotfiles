@@ -19,36 +19,6 @@ wmclass=dolphin org.kde.dolphin
 wmclasscomplete=true
 wmclassmatch=1
 
-[Don't assign desktop for flameshot]
-Description=Don't assign desktop for flameshot
-desktops=
-desktopsrule=1
-title=flameshot
-titlematch=1
-types=1
-wmclass=flameshot
-wmclassmatch=1
-
-[Don't assign desktops to org.kde.kcalc]
-Description=Don't assign desktops to org.kde.kcalc
-desktops=
-desktopsrule=1
-title=KCalc
-types=1
-wmclass=kcalc org.kde.kcalc
-wmclasscomplete=true
-wmclassmatch=1
-
-[Don't assign desktops to wev]
-Description=Don't assign desktops to wev
-desktops=
-desktopsrule=1
-title=wev
-titlematch=1
-types=1
-wmclass=wev
-wmclassmatch=1
-
 [Firefox on desktop 2]
 Description=Firefox on desktop 2
 desktops=aa5a0d38-d907-4279-b3c4-88a24025dc23
@@ -57,15 +27,6 @@ types=1
 wmclass=firefox
 wmclasscomplete=true
 wmclassmatch=2
-
-[Non-kitty windows on desktop 5]
-Description=Non-kitty windows on desktop 5
-desktops=e74c37b0-c62f-4291-8008-d2b05ea444e1
-desktopsrule=2
-types=1
-wmclass=^(?!.*\\bkitty\\b).*
-wmclasscomplete=true
-wmclassmatch=3
 
 [VSCode (Code-OSS) on Desktop 4]
 Description=VSCode (Code-OSS) on Desktop 4
