@@ -9,16 +9,6 @@ wmclass=\\b(firefox|google chrome|edge)\\b
 wmclasscomplete=true
 wmclassmatch=3
 
-[Dolphin on desktop 3]
-Description=Dolphin on desktop 3
-desktops=7495899b-39af-4dbe-9e9e-4c814880bdb0
-desktopsrule=2
-title=Downloads — Dolphin
-types=1
-wmclass=dolphin org.kde.dolphin
-wmclasscomplete=true
-wmclassmatch=1
-
 [Firefox on desktop 2]
 Description=Firefox on desktop 2
 desktops=75ac6b71-312e-4384-94ef-45984fd0cd54
@@ -28,6 +18,17 @@ wmclass=firefox
 wmclasscomplete=true
 wmclassmatch=2
 
+[Firefox with teams on all desktops]
+Description=Firefox with teams on all desktops
+desktops=\\0
+desktopsrule=2
+screenrule=2
+title=Microsoft Teams
+titlematch=2
+types=1
+wmclass=firefox
+wmclassmatch=1
+
 [Remove titlebar for kitty]
 Description=Remove titlebar for kitty
 noborder=true
@@ -36,8 +37,8 @@ types=1
 wmclass=kitty
 wmclassmatch=1
 
-[VSCode (Code-OSS) on Desktop 4]
-Description=VSCode (Code-OSS) on Desktop 4
+[VSCode (Code-OSS) on Desktop 3]
+Description=VSCode (Code-OSS) on Desktop 3
 clientmachine=localhost
 desktops=7495899b-39af-4dbe-9e9e-4c814880bdb0
 desktopsrule=2
