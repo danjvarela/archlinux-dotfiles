@@ -7,6 +7,8 @@
 
 [[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
 
+shopt -s histappend
+
 export PATH=$PATH:~/.local/bin/
 export PATH=$PATH:~/.dotnet/tools
 export EDITOR=nvim
