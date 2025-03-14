@@ -40,3 +40,4 @@ set -o vi
 source ~/.bash_functions
 
 [[ ! ${BLE_VERSION-} ]] || ble-attach
+. "$HOME/.cargo/env"
