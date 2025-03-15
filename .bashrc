@@ -13,6 +13,9 @@ export PATH=$PATH:~/.local/bin/
 export PATH=$PATH:~/.dotnet/tools
 export EDITOR=nvim
 export GOPATH=$HOME/.go
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
