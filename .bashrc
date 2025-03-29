@@ -34,9 +34,10 @@ eval "$(starship init bash)"
 eval "$(rbenv init -)"
 
 [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+
 source /usr/share/nvm/nvm.sh
 source /usr/share/nvm/bash_completion
-source /usr/share/nvm/install-nvm-exec
+# source /usr/share/nvm/install-nvm-exec
 
 set -o vi
 
@@ -44,3 +45,5 @@ source ~/.bash_functions
 
 [[ ! ${BLE_VERSION-} ]] || ble-attach
 . "$HOME/.cargo/env"
+export CAPLINQ_CONTAINER_PATH="/home/dan/Documents/work"
+export PATH=/home/dan/Documents/work/bin:$PATH
