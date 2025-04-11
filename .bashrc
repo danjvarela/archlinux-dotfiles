@@ -42,6 +42,7 @@ source /usr/share/nvm/bash_completion
 set -o vi
 
 source ~/.bash_functions
+source /usr/share/git/completion/git-completion.bash
 
 [[ ! ${BLE_VERSION-} ]] || ble-attach
 . "$HOME/.cargo/env"
