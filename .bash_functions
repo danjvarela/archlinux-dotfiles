@@ -1,15 +1,3 @@
-function setup_logitech() {
-    sudo rm /etc/keyd/default.conf 
-    sudo cp ~/.config/keyd/default.conf.logitech /etc/keyd/default.conf
-    sudo systemctl restart keyd
-}
-
-function setup_k2() {
-    sudo rm /etc/keyd/default.conf 
-    sudo cp ~/.config/keyd/default.conf.k2 /etc/keyd/default.conf
-    sudo systemctl restart keyd
-}
-
 function checkout-empty() {
   git checkout $(git commit-tree $(git hash-object -t tree /dev/null) < /dev/null)   
 }
