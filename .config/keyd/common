@@ -1,15 +1,4 @@
-[ids]
-
-*
-
 [main]
-
-rightalt = rightmeta
-leftalt = leftmeta
-
-rightmeta = rightalt
-leftmeta = leftalt
-
 rightcontrol = rightcontrol
 
 # Maps capslock to escape when pressed and control when held.
