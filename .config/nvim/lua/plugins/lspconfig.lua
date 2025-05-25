@@ -3,12 +3,11 @@ return {
   opts = {
     servers = {
       omnisharp = {
-        -- because mason-installed omnisharp executable is now named `OmniSharp` instead of `omnisharp`
         cmd = {
           "OmniSharp",
           "-z",
           "--hostPID",
-          vim.fn.getpid() .. "",
+          tostring(vim.fn.getpid()),
           "DotNet:enablePackageRestore=false",
           "--encoding",
           "utf-8",
