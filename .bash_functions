@@ -1,3 +1,15 @@
+function nvims() {
+  items=("lazynvim" "my" "bare")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "lazynvim" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=nvim/$config nvim "$@"
+}
+
 function checkout-empty() {
   git checkout $(git commit-tree $(git hash-object -t tree /dev/null) < /dev/null)   
 }
