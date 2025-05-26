@@ -1,13 +1,13 @@
-function setup_logitech() {
-    sudo rm /etc/keyd/default.conf 
-    sudo cp /etc/keyd/default.conf.logitech /etc/keyd/default.conf
-    sudo systemctl restart keyd
-}
-
-function setup_k2() {
-    sudo rm /etc/keyd/default.conf 
-    sudo cp /etc/keyd/default.conf.k2 /etc/keyd/default.conf
-    sudo systemctl restart keyd
+function nvims() {
+  items=("lazynvim" "my" "bare")
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == "lazynvim" ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=nvim/$config nvim "$@"
 }
 
 function checkout-empty() {

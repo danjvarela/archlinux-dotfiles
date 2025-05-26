@@ -3,10 +3,10 @@
 	name = Dan
 
 [difftool]
-  prompt = true
+	prompt = false
 
 [diff]
-  tool = nvimdiff
+	tool = nvimdiff
 
 [difftool "nvimdiff"]
-  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"

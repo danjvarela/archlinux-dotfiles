@@ -1,0 +1,8 @@
+[main]
+rightcontrol = rightcontrol
+
+# Maps capslock to escape when pressed and control when held.
+capslock = overload(hyper, esc)
+
+# Remaps the escape key to capslock
+[hyper:C-A-M]
