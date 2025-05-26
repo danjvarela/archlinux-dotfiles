@@ -5,5 +5,6 @@ return {
     dashboard = { enabled = false },
     explorer = { enabled = false },
     image = { enabled = true },
+    scroll = { enabled = false },
   },
 }
