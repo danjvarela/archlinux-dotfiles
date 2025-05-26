@@ -4,5 +4,8 @@ return {
     dashboard = {
       enabled = false,
     },
+    explorer = {
+      enables = false,
+    },
   },
 }
