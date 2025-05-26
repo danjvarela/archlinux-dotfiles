@@ -1,11 +1,9 @@
 return {
   "snacks.nvim",
   opts = {
-    dashboard = {
-      enabled = false,
-    },
-    explorer = {
-      enables = false,
-    },
+    bigfile = { enabled = true },
+    dashboard = { enabled = false },
+    explorer = { enabled = false },
+    image = { enabled = true },
   },
 }
