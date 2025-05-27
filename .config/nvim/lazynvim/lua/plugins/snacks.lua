@@ -8,8 +8,8 @@ return {
     scroll = { enabled = false },
     picker = {
       matcher = {
-        cwd_bonus = true, -- give bonus for matching files in the cwd
         frecency = true, -- give bonus for frequent and recently visited files
+        history_bonus = true, -- give more weight to chronological order 
       },
     },
   },
