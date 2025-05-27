@@ -1,6 +1,6 @@
 return {
   "max397574/better-escape.nvim",
-  enabled = true,
+  enabled = false,
   config = function()
     require("better_escape").setup({
       mappings = {
