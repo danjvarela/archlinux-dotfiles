@@ -1,4 +1,4 @@
-vim.g.lazyvim_picker = "telescope" -- use telescope as the default picker
+vim.g.lazyvim_picker = "snacks" -- use snacks.picker as the default picker
 vim.g.autoformat = false -- i format the file whenever the fuck i want
 
 vim.opt.cursorline = false -- dont highlight entire line.
