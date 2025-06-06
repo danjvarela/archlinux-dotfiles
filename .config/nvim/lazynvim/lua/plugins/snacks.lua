@@ -3,7 +3,7 @@ return {
   opts = {
     bigfile = { enabled = true },
     dashboard = { enabled = false },
-    image = { enabled = true },
+    image = { enabled = false },
     scroll = { enabled = false },
     picker = {
       matcher = {

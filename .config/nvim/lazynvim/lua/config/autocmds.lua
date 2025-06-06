@@ -62,3 +62,18 @@ vim.api.nvim_create_user_command("CopyRelativePath", copy_relative_path, {
 vim.api.nvim_create_user_command("CopyAbsolutePath", copy_absolute_path, {
   desc = "Copy current buffer absolute path",
 })
+
+-------------------------------------------------------------------------------------
+
+local function delete_file_and_buffer()
+  local confirm = vim.fn.confirm("Delete buffer and file?", "&Yes\n&No", 2)
+
+  if confirm == 1 then
+    os.remove(vim.fn.expand("%"))
+    vim.api.nvim_buf_delete(0, { force = true })
+  end
+end
+
+vim.api.nvim_create_user_command("DeleteFileAndBuffer", delete_file_and_buffer, {
+  desc = "Delete file in the currently opened buffer. Deletes buffer as well.",
+})
