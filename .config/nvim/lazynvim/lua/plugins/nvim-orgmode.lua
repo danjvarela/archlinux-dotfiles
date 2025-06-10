@@ -30,6 +30,26 @@ return {
           use_vim_ui = true,
         },
       },
+      org_agenda_custom_commands = {
+        w = {
+          description = "Work Agenda",
+          types = {
+            {
+              type = "agenda",
+              org_agenda_files = { "~/.orgfiles/work/**/*" },
+            },
+          },
+        },
+        p = {
+          description = "Personal Agenda",
+          types = {
+            {
+              type = "agenda",
+              org_agenda_files = { "~/.orgfiles/personal/**/*" },
+            },
+          },
+        },
+      },
     })
     require("org-bullets").setup()
   end,
