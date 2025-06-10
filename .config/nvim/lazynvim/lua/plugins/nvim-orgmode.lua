@@ -63,10 +63,11 @@ return {
             })
           end
 
-          -- Example: if you use Snacks, you can do something like this (THis is not implemented)
-          Snacks.notifier.notify(table.concat(result, "\n"), vim.log.levels.INFO, {
-            title = "Orgmode",
-          })
+          if not vim.tbl_isempty(result) then
+            Snacks.notifier.notify(table.concat(result, "\n"), vim.log.levels.INFO, {
+              title = "Orgmode",
+            })
+          end
         end,
       },
     })
