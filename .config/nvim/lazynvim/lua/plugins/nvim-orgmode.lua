@@ -46,6 +46,7 @@ return {
             {
               type = "agenda",
               org_agenda_files = { "~/Orgfiles/**/*" },
+              org_agenda_tag_filter_preset = "-USHolidays",
             },
           },
         },
@@ -53,6 +54,8 @@ return {
       org_log_done = "time",
       org_log_repeat = "time",
       org_log_into_drawer = "LOGBOOK", -- creates a LOGBOOK drawer for logs
+      org_blank_before_new_entry = { heading = false, plain_list_item = false },
+      org_startup_folded = "showeverything",
       notifications = {
         enabled = true,
         reminder_time = { 0, 5, 10 },
