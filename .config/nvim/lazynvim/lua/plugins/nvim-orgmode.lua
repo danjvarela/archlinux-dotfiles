@@ -6,7 +6,7 @@ return {
   event = "VeryLazy",
   config = function()
     require("orgmode").setup({
-      org_agenda_files = "~/.orgfiles/**/*.org",
+      org_agenda_files = { "~/.orgfiles/**/*", "~/Orgfiles/**/*" },
       org_default_notes_file = "~/.orgfiles/refile.org",
       org_todo_keywords = {
         "TODO",
@@ -36,7 +36,7 @@ return {
           types = {
             {
               type = "agenda",
-              org_agenda_files = { "~/.orgfiles/work/**/*" },
+              org_agenda_files = { "~/.orgfiles/**/*" },
             },
           },
         },
@@ -45,11 +45,14 @@ return {
           types = {
             {
               type = "agenda",
-              org_agenda_files = { "~/.orgfiles/personal/**/*" },
+              org_agenda_files = { "~/Orgfiles/**/*" },
             },
           },
         },
       },
+      org_log_done = "time",
+      org_log_repeat = "time",
+      org_log_into_drawer = "LOGBOOK", -- creates a LOGBOOK drawer for logs
       notifications = {
         enabled = true,
         reminder_time = { 0, 5, 10 },
