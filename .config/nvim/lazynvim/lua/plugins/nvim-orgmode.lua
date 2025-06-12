@@ -1,3 +1,6 @@
+local personal_agenda_orgfiles_path = "~/Orgfiles/*.org"
+local work_agenda_orgfiles_path = "~/.orgfiles/**/*"
+
 return {
   "nvim-orgmode/orgmode",
   dependencies = {
@@ -6,7 +9,7 @@ return {
   event = "VeryLazy",
   config = function()
     require("orgmode").setup({
-      org_agenda_files = { "~/.orgfiles/**/*", "~/Orgfiles/**/*" },
+      org_agenda_files = { work_agenda_orgfiles_path, personal_agenda_orgfiles_path },
       org_default_notes_file = "~/.orgfiles/refile.org",
       org_todo_keywords = {
         "TODO",
@@ -36,7 +39,7 @@ return {
           types = {
             {
               type = "agenda",
-              org_agenda_files = { "~/.orgfiles/**/*" },
+              org_agenda_files = { work_agenda_orgfiles_path },
             },
           },
         },
@@ -45,7 +48,7 @@ return {
           types = {
             {
               type = "agenda",
-              org_agenda_files = { "~/Orgfiles/**/*" },
+              org_agenda_files = { personal_agenda_orgfiles_path },
               org_agenda_tag_filter_preset = "-USHolidays",
             },
           },
