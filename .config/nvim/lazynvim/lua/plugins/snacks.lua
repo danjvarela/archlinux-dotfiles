@@ -11,5 +11,6 @@ return {
         history_bonus = true, -- give more weight to chronological order
       },
     },
+    explorer = { enabled = false },
   },
 }
