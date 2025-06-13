@@ -12,13 +12,13 @@ return {
       org_agenda_files = { work_agenda_orgfiles_path, personal_agenda_orgfiles_path },
       org_default_notes_file = "~/.orgfiles/refile.org",
       org_todo_keywords = {
-        "TODO",
-        "ONGOING",
-        "HOLD",
-        "WAITING",
+        "TODO(t)",
+        "ONGOING(o)",
+        "HOLD(h)",
+        "WAITING(w)",
         "|",
-        "DONE",
-        "CANCELLED",
+        "DONE(d)",
+        "CANCELLED(c)",
       },
       org_todo_keyword_faces = {
         TODO = ":foreground red :weight bold",
@@ -78,6 +78,13 @@ return {
             })
           end
         end,
+      },
+      org_capture_templates = {
+        w = {
+          description = "Work-related task",
+          template = "* TODO %?",
+          target = "~/.orgfiles/tasks.org",
+        },
       },
     })
     require("org-bullets").setup()

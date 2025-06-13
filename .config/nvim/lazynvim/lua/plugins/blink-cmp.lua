@@ -19,6 +19,9 @@ return {
     },
     opts = {
       sources = {
+        per_filetype = {
+          org = { "orgmode" },
+        },
         default = { "avante", "calc" },
         providers = {
           avante = {
@@ -28,6 +31,11 @@ return {
           calc = {
             name = "calc",
             module = "blink.compat.source",
+          },
+          orgmode = {
+            name = "Orgmode",
+            module = "orgmode.org.autocompletion.blink",
+            fallbacks = { "buffer" },
           },
         },
       },
