@@ -1,5 +1,5 @@
-local personal_agenda_orgfiles_path = "~/Orgfiles/*.org"
-local work_agenda_orgfiles_path = "~/.orgfiles/**/*"
+local personal_agenda_orgfiles_path = "~/Documents/notes/personal/life/**/*"
+local work_agenda_orgfiles_path = "~/Documents/notes/work/**/*"
 
 return {
   "nvim-orgmode/orgmode",
@@ -9,8 +9,8 @@ return {
   event = "VeryLazy",
   config = function()
     require("orgmode").setup({
-      org_agenda_files = { work_agenda_orgfiles_path, personal_agenda_orgfiles_path },
-      org_default_notes_file = "~/.orgfiles/refile.org",
+      org_agenda_files = { personal_agenda_orgfiles_path, work_agenda_orgfiles_path, "~/Documents/notes/*" },
+      org_default_notes_file = "~/Documents/notes/refile.org",
       org_todo_keywords = {
         "TODO(t)",
         "ONGOING(o)",
@@ -58,7 +58,7 @@ return {
       org_log_repeat = "time",
       org_log_into_drawer = "LOGBOOK", -- creates a LOGBOOK drawer for logs
       org_blank_before_new_entry = { heading = false, plain_list_item = false },
-      org_startup_folded = "showeverything",
+      org_startup_folded = "overview",
       notifications = {
         enabled = true,
         reminder_time = { 0, 5, 10 },
@@ -83,7 +83,12 @@ return {
         w = {
           description = "Work-related task",
           template = "* TODO %?",
-          target = "~/.orgfiles/tasks.org",
+          target = "~/Documents/notes/work/tasks.org",
+        },
+        p = {
+          description = "Personal-life-related task",
+          template = "* TODO %?",
+          target = "~/Documents/notes/personal/life/tasks.org",
         },
       },
     })
