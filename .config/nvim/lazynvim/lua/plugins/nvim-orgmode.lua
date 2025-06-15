@@ -86,9 +86,9 @@ return {
           target = "~/Documents/notes/work/tasks.org",
         },
         p = {
-          description = "Personal-life-related task",
+          description = "Personal reminder",
           template = "* TODO %?",
-          target = "~/Documents/notes/personal/life/tasks.org",
+          target = "~/Documents/notes/personal/life/reminders.org",
         },
       },
     })
