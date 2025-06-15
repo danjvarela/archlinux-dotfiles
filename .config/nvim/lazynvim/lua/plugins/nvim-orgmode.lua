@@ -1,4 +1,4 @@
-local personal_agenda_orgfiles_path = "~/Documents/notes/personal/life/**/*"
+local personal_agenda_orgfiles_path = "~/Documents/notes/personal/life/*.{org,org_archive}"
 local work_agenda_orgfiles_path = "~/Documents/notes/work/**/*"
 
 return {
@@ -9,7 +9,11 @@ return {
   event = "VeryLazy",
   config = function()
     require("orgmode").setup({
-      org_agenda_files = { personal_agenda_orgfiles_path, work_agenda_orgfiles_path, "~/Documents/notes/*" },
+      org_agenda_files = {
+        personal_agenda_orgfiles_path,
+        work_agenda_orgfiles_path,
+        "~/Documents/notes/*",
+      },
       org_default_notes_file = "~/Documents/notes/refile.org",
       org_todo_keywords = {
         "TODO(t)",
