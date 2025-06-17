@@ -1,20 +1,18 @@
 # cd from anywhere
-function cf() {
+function cd-file() {
   local file
-
   file="$(locate -Ai -0 $@ | grep -z -vE '~$' | fzf --read0 -0 -1)"
-
   if [[ -n $file ]]; then
     if [[ -d $file ]]; then
-      cd -- $file
+      cd -- "$file"
     else
-      cd -- ${file:h}
+      cd -- "$(dirname "$file")"
     fi
   fi
 }
 
 # cd to selected directory, including hidden ones. will search on current directory
-function fda() {
+function find-dir() {
   local dir
   dir=$(find ${1:-.} -type d 2>/dev/null | fzf +m) && cd "$dir"
 }
@@ -22,7 +20,7 @@ function fda() {
 # Find files
 #   - CTRL-O to open with `open` command,
 #   - CTRL-E or Enter key to open with the $EDITOR
-function fo() {
+function find-file() {
   IFS=$'\n' out=("$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e --preview="bat --color=always {}")")
   key=$(head -1 <<<"$out")
   file=$(head -2 <<<"$out" | tail -1)
