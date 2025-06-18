@@ -1,5 +1,5 @@
 # cd from anywhere
-function cd-file() {
+function cd-anything() {
   local file
   file="$(locate -Ai -0 $@ | grep -z -vE '~$' | fzf --read0 -0 -1)"
   if [[ -n $file ]]; then
