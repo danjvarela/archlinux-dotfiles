@@ -9,17 +9,19 @@
 
 shopt -s histappend
 
-export PATH=$PATH:$HOME/.local/bin/
-export PATH=$PATH:$HOME/.dotnet/tools
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$HOME/Documents/work/bin
-
 export EDITOR="nvim"
 export GOPATH=$HOME/.go
 export ANDROID_HOME=$HOME/Android/Sdk
 export NVIM_APPNAME=nvim/lazynvim
 export CAPLINQ_CONTAINER_PATH=$HOME/Documents/work
+export DOTNET_ROOT=$HOME/.dotnet
+
+export PATH=$PATH:$HOME/.local/bin/
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$HOME/Documents/work/bin
+export PATH=$PATH:$DOTNET_ROOT
+export PATH=$PATH:$DOTNET_ROOT/tools
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
