@@ -10,7 +10,14 @@ return {
         frecency = true, -- give bonus for frequent and recently visited files
         history_bonus = true, -- give more weight to chronological order
       },
+      sources = {
+        explorer = {
+          auto_close = true,
+        },
+      },
     },
-    explorer = { enabled = false },
+    explorer = {
+      replace_netrw = true,
+    },
   },
 }
