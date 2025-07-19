@@ -14,20 +14,13 @@ return {
 
   {
     "saghen/blink.cmp",
-    dependencies = {
-      "Kaiser-Yang/blink-cmp-avante",
-    },
     opts = {
       sources = {
         per_filetype = {
           org = { "orgmode" },
         },
-        default = { "avante", "calc" },
+        default = { "calc", "easy-dotnet" },
         providers = {
-          avante = {
-            module = "blink-cmp-avante",
-            name = "Avante",
-          },
           calc = {
             name = "calc",
             module = "blink.compat.source",
@@ -36,6 +29,13 @@ return {
             name = "Orgmode",
             module = "orgmode.org.autocompletion.blink",
             fallbacks = { "buffer" },
+          },
+          ["easy-dotnet"] = {
+            name = "easy-dotnet",
+            enabled = true,
+            module = "easy-dotnet.completion.blink",
+            score_offset = 10000,
+            async = true,
           },
         },
       },
