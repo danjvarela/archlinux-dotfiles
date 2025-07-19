@@ -1,6 +1,10 @@
 return {
   "williamboman/mason.nvim",
-  opts = function(_, opts)
-    table.insert(opts.ensure_installed, "prettierd")
-  end,
+  opts = {
+    ensure_installed = { "prettierd", "roslyn" },
+    registries = {
+      "github:mason-org/mason-registry",
+      "github:Crashdummyy/mason-registry",
+    },
+  },
 }
