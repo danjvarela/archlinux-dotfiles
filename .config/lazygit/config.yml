@@ -493,3 +493,5 @@ keybinding:
     bulkMenu: b
   commitMessage:
     commitMenu: <c-o>
+services:
+  "dev.azure.com": "azuredevops:dev.azure.com/caplinq"
