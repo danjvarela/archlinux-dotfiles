@@ -94,6 +94,16 @@ return {
           template = "* TODO %?",
           target = "~/Documents/notes/personal/life/reminders.org",
         },
+        b = {
+          description = "Stuff to buy",
+          template = "* TODO %?",
+          target = "~/Documents/notes/personal/life/stuff-to-buy.org",
+        },
+        e = {
+          description = "Stuff to read/watch",
+          template = "* TODO %?",
+          target = "~/Documents/notes/personal/life/entertainment.org",
+        },
       },
     })
     require("org-bullets").setup()
