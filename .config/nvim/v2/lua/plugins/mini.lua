@@ -29,8 +29,10 @@ return {
       modes = { insert = true, command = true, terminal = false }
     },
     files = {
-      -- use trash stored at mini.files/trash
-      permanent_delete = false
+      options = {
+        -- use trash stored at mini.files/trash
+        permanent_delete = false
+      }
     },
     comment = {},
     move = {},
@@ -46,17 +48,26 @@ return {
         update_n_lines = "gsn",
       }
     },
-    bracketed = {
-      quickfix = {
-        suffix = '' -- Trouble plugin already handles this mapping
-      }
-    },
+    bracketed = {},
     diff = {
       view = {
-        style = 'sign'
-      }
+        style = 'sign',
+        signs = {
+          add = "▎",
+          change = "▎",
+          delete = ""
+        }
+      },
     },
     icons = {},
+    pick = {},
+    notify = {
+      lsp_progress = {
+        enable = false
+      }
+    },
+    git = {},
+    extra = {}
   },
   config = function(_, opts)
     require("mini.ai").setup(opts.ai())
@@ -68,6 +79,13 @@ return {
     require("mini.surround").setup(opts.surround)
     require("mini.bracketed").setup(opts.bracketed)
     require("mini.icons").setup(opts.icons)
+    require("mini.pick").setup(opts.pick)
+    require("mini.notify").setup(opts.notify)
+    require("mini.diff").setup(opts.diff)
+    require("mini.git").setup(opts.git)
+    require("mini.extra").setup(opts.extra)
+
+    vim.notify = require('mini.notify').make_notify()
 
     local minifiles_toggle = function(...)
       if not MiniFiles.close() then MiniFiles.open(...) end
@@ -77,5 +95,35 @@ return {
       { desc = "Open mini.files (directory of current file)" })
     vim.keymap.set({ 'n', 'v' }, '<leader>E', function() minifiles_toggle(vim.uv.cwd(), true) end,
       { desc = "Open mini.files (cwd)" })
+    vim.keymap.set({ "n", "v" }, "<leader>sf", function() MiniPick.builtin.files() end, { desc = "Search files" })
+    vim.keymap.set({ "n", "v" }, "<leader>sg", function() MiniPick.builtin.grep_live() end, { desc = "Live grep" })
+    vim.keymap.set({ "n", "v" }, "<leader>sb", function() MiniPick.builtin.buffers() end, { desc = "Search buffers" })
+    vim.keymap.set({ "n", "v" }, "<leader>sr", function() MiniPick.builtin.resume() end, { desc = "Resume last search" })
+    vim.keymap.set({ "n", "v" }, "<leader>sk", function() MiniExtra.pickers.keymaps() end, { desc = "Search keymaps" })
+
+    vim.keymap.set({ "n", "v" }, "<leader>ss", function() MiniExtra.pickers.lsp({ scope = 'document_symbol' }) end,
+      { desc = "Search lsp document symbols" })
+    vim.keymap.set({ "n", "v" }, "<leader>sS", function() MiniExtra.pickers.lsp({ scope = 'workspace_symbol' }) end,
+      { desc = "Search lsp workspace symbols" })
+    vim.keymap.set({ "n", "v" }, "<leader>grr", function() MiniExtra.pickers.lsp({ scope = 'references' }) end,
+      { desc = "Search references" })
+    vim.keymap.set({ "n", "v" }, "<leader>gd", function() MiniExtra.pickers.lsp({ scope = 'definition' }) end,
+      { desc = "Search definition" })
+    vim.keymap.set({ "n", "v" }, "<leader>gD", function() MiniExtra.pickers.lsp({ scope = 'declaration' }) end,
+      { desc = "Search declaration" })
+    vim.keymap.set({ "n", "v" }, "<leader>gri", function() MiniExtra.pickers.lsp({ scope = 'implementation' }) end,
+      { desc = "Search implementation" })
+    vim.keymap.set({ "n", "v" }, "<leader>grt", function() MiniExtra.pickers.lsp({ scope = 'type_definition' }) end,
+      { desc = "Search type definition" })
+
+    vim.keymap.set({ "n", "v" }, "<leader>xx", function() MiniExtra.pickers.diagnostic({ scope = 'current' }) end,
+      { desc = "Search diagnostics (current buffer)" })
+    vim.keymap.set({ "n", "v" }, "<leader>xX", function() MiniExtra.pickers.diagnostic({ scope = 'all' }) end,
+      { desc = "Search diagnostics" })
+
+    vim.keymap.set({ 'n', 'x' }, '<Leader>gs', function() MiniGit.show_at_cursor() end, { desc = 'Show at cursor' })
+
+    vim.keymap.set({ "n", "v" }, "<leader>n", function() MiniNotify.show_history() end,
+      { desc = "Show notification history" })
   end
 }

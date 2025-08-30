@@ -8,7 +8,7 @@ return {
   },
   ft = { "org" },
   keys = {
-    { "<leader>o", desc = "orgmode" }
+    { "<leader>o", desc = "Orgmode" }
   },
   config = function()
     require("orgmode").setup({
@@ -80,9 +80,7 @@ return {
           end
 
           if not vim.tbl_isempty(result) then
-            Snacks.notifier.notify(table.concat(result, "\n"), vim.log.levels.INFO, {
-              title = "Orgmode",
-            })
+            vim.notify(table.concat(result, "\n"), vim.log.levels.INFO)
           end
         end,
       },

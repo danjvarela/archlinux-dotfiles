@@ -1,7 +1,6 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  opts_extend = { "spec" },
   opts = {
     preset = "helix",
     defaults = {},
@@ -11,10 +10,10 @@ return {
         { "<leader>c", group = "code" },
         { "<leader>f", group = "file/find" },
         { "<leader>g", group = "git" },
+        { "<leader>u", group = "ui" },
         { "<leader>gh", group = "hunks" },
         { "<leader>q", group = "quit" },
         { "<leader>s", group = "search" },
-        { "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
         { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
         { "[", group = "prev" },
         { "]", group = "next" },
@@ -36,7 +35,6 @@ return {
             return require("which-key.extras").expand.win()
           end,
         },
-        { "gx", desc = "Open with system app" },
       },
     },
   },
