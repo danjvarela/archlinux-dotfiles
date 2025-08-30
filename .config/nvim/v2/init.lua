@@ -36,6 +36,7 @@ vim.opt.writebackup = false -- do not create backups
 vim.opt.swapfile = false    -- do not create a swap file
 vim.opt.undofile = true     -- persist undo history
 vim.opt.autoread = true     -- auto reload changes made to a file by another program outside nvim
+vim.opt.confirm = true      -- prompt before closing
 
 -- fold settings
 vim.opt.foldmethod = "expr"                          -- use foldexpr for folding
@@ -109,6 +110,7 @@ local icons = {
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("vtsls")
 vim.lsp.enable("roslyn_ls")
+vim.lsp.enable("emmet-language-server")
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)

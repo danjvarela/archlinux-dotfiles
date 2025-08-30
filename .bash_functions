@@ -35,8 +35,6 @@ function nvims() {
   if [[ -z $config ]]; then
     echo "Nothing selected"
     return 0
-  elif [[ $config == "lazynvim" ]]; then
-    config=""
   fi
   NVIM_APPNAME=nvim/$config nvim "$@"
 }
