@@ -6,10 +6,6 @@ return {
   dependencies = {
     "akinsho/org-bullets.nvim",
   },
-  ft = { "org" },
-  keys = {
-    { "<leader>o", desc = "Orgmode" }
-  },
   config = function()
     require("orgmode").setup({
       org_agenda_files = {
