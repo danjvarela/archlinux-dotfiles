@@ -12,7 +12,7 @@ shopt -s histappend
 export EDITOR="nvim"
 export GOPATH=$HOME/.go
 export ANDROID_HOME=$HOME/Android/Sdk
-export NVIM_APPNAME=nvim/lazynvim
+export NVIM_APPNAME=nvim/v2
 export CAPLINQ_CONTAINER_PATH=$HOME/Documents/work
 export DOTNET_ROOT=$HOME/.dotnet
 

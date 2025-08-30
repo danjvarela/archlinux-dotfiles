@@ -30,7 +30,7 @@ function find_file() {
 }
 
 function nvims() {
-  items=("lazynvim" "my" "bare")
+  items=("lazynvim" "v2")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"

@@ -19,7 +19,10 @@ return {
         per_filetype = {
           org = { "orgmode" },
         },
-        default = { "calc", "easy-dotnet" },
+        default = {
+          "calc",
+          -- "easy-dotnet"
+        },
         providers = {
           calc = {
             name = "calc",
@@ -30,13 +33,13 @@ return {
             module = "orgmode.org.autocompletion.blink",
             fallbacks = { "buffer" },
           },
-          ["easy-dotnet"] = {
-            name = "easy-dotnet",
-            enabled = true,
-            module = "easy-dotnet.completion.blink",
-            score_offset = 10000,
-            async = true,
-          },
+          -- ["easy-dotnet"] = {
+          --   name = "easy-dotnet",
+          --   enabled = true,
+          --   module = "easy-dotnet.completion.blink",
+          --   score_offset = 10000,
+          --   async = true,
+          -- },
         },
       },
     },
