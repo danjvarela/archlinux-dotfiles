@@ -5,13 +5,15 @@ return {
 		-- Event to trigger linters
 		events = { "BufWritePost", "BufReadPost", "InsertLeave" },
 		linters_by_ft = {
-			["javascript"] = { "eslint" },
-			["typescript"] = { "eslint" },
+			["javascript"] = { "eslint_d" },
+			["typescript"] = { "eslint_d" },
 			["bash"] = { "bash" },
 		},
 	},
 	config = function(_, opts)
 		local lint = require("lint")
+
+		lint.linters_by_ft = opts.linters_by_ft
 
 		local function debounce(ms, fn)
 			local timer = vim.uv.new_timer()
