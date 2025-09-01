@@ -7,6 +7,7 @@ return {
     spec = {
       {
         mode = { "n", "v" },
+        { "<leader>o", group = "orgmode" },
         { "<leader>c", group = "code" },
         { "<leader>f", group = "file/find" },
         { "<leader>g", group = "git" },
@@ -14,6 +15,7 @@ return {
         { "<leader>gh", group = "hunks" },
         { "<leader>q", group = "quit" },
         { "<leader>s", group = "search" },
+        { "<leader><tab>", group = "tabs" },
         { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
         { "[", group = "prev" },
         { "]", group = "next" },
