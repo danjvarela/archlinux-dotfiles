@@ -35,8 +35,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			  { desc = "Organize Imports" }
 			)
 
-			map({ "n", "v" }, "<leader>cc", vim.lsp.codelens.run, { desc = "Codelens" })
-			map({ "n" }, "<leader>cC", vim.lsp.codelens.refresh, { desc = "Codelens" })
+			map({ "n", "v" }, "<leader>cc",function() vim.lsp.codelens.run() end, { desc = "Codelens" })
+			map({ "n" }, "<leader>cC", function() vim.lsp.codelens.refresh() end, { desc = "Codelens" })
 			-- stylua: ignore end
 		end
 	end,
