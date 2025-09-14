@@ -114,3 +114,14 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.bo[event.buf].buflisted = false
 	end,
 })
+
+-- always have n lines at the center before vertical scrolling starts
+local line_count = 5
+vim.api.nvim_create_autocmd({ "WinResized", "VimResized", "WinNew", "WinEnter" }, {
+	group = augroup("center_cursor"),
+	callback = function()
+		local win_height = vim.api.nvim_win_get_height(0)
+		local desired_scrolloff = math.max(line_count, math.floor((win_height - line_count) / 2))
+		vim.opt.scrolloff = desired_scrolloff
+	end,
+})

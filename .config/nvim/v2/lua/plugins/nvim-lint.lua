@@ -11,6 +11,7 @@ return {
 		},
 	},
 	config = function(_, opts)
+		vim.env.ESLINT_D_PPID = vim.fn.getpid()
 		local lint = require("lint")
 
 		lint.linters_by_ft = opts.linters_by_ft

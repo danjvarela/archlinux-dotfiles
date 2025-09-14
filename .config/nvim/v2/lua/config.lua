@@ -40,6 +40,7 @@ vim.opt.confirm = true -- prompt before closing
 vim.opt.foldmethod = "expr" -- use foldexpr for folding
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- use treesitter for folding
 vim.opt.foldlevel = 99 -- start with all folds open
+vim.opt.foldtext = ""
 
 -- split settings
 vim.opt.splitbelow = true -- horizontal splits go below by default
@@ -56,3 +57,4 @@ vim.opt.pumheight = 10
 
 -- global variables
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"

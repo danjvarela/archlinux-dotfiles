@@ -2,6 +2,8 @@ vim.lsp.enable("lua_ls")
 vim.lsp.enable("vtsls")
 vim.lsp.enable("roslyn_ls")
 vim.lsp.enable("emmet-language-server")
+vim.lsp.enable("jsonls")
+vim.lsp.enable("css_ls")
 
 local icons = {
 	diagnostics = {
@@ -16,7 +18,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
 		if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
-			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+			-- vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
 
 			local map = vim.keymap.set
 
@@ -24,7 +26,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			map("i", "<C-Space>", function() vim.lsp.completion.get() end)
 			map("n", "gk", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
 			map("i", "<c-k>", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
-			map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+			map({ "n", "v" }, "<leader>ca",function() vim.lsp.buf.code_action() end, { desc = "Code Action" })
+			map({ "n" }, "<leader>cr",function() vim.lsp.buf.rename() end, { desc = "Code Action" })
 
 			map(
 			  { "n", "v" },

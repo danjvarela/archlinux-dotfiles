@@ -1,8 +1,8 @@
 return {
 	cmd = {
-    vim.fs.joinpath(vim.fn.stdpath("data"), "mason", "bin", "vtsls"),
-    "--stdio"
-  },
+		vim.fs.joinpath(vim.fn.stdpath("data"), "mason", "bin", "vtsls"),
+		"--stdio",
+	},
 	filetypes = {
 		"javascript",
 		"javascriptreact",
