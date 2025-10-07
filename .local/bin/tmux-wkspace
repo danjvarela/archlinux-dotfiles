@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Make sure we're inside tmux
+if [ -z "$TMUX" ]; then
+  echo "This script must be run inside a tmux session."
+  exit 1
+fi
+
+tmux kill-pane -a
+
+tmux split-window -h                 # split right
+tmux split-window -v -t 0            # split bottom of the left pane
+
+tmux select-layout '101f,237x60,0,0{161x60,0,0[161x49,0,0,4,161x10,0,50,10],75x60,162,0,6}'
