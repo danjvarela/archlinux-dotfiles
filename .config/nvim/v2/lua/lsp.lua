@@ -4,6 +4,7 @@ vim.lsp.enable("roslyn_ls")
 vim.lsp.enable("emmet-language-server")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("css_ls")
+vim.lsp.enable("marksman")
 
 local icons = {
 	diagnostics = {
