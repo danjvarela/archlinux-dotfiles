@@ -28,7 +28,7 @@ return {
 			["markdown.mdx"] = { "prettierd" },
 		},
 		default_format_opts = {
-      -- default to the lsp if no formatter is available 
+			-- default to the lsp if no formatter is available
 			lsp_format = "fallback",
 		},
 	},

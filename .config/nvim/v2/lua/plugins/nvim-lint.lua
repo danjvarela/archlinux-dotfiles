@@ -7,7 +7,8 @@ return {
 		linters_by_ft = {
 			["javascript"] = { "eslint_d" },
 			["typescript"] = { "eslint_d" },
-			["bash"] = { "bash" },
+			["css"] = { "stylelint" },
+			["scss"] = { "stylelint" },
 		},
 	},
 	config = function(_, opts)
