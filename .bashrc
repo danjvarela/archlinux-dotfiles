@@ -23,19 +23,14 @@ export PATH=$PATH:$HOME/Documents/work/bin
 export PATH=$PATH:$DOTNET_ROOT
 export PATH=$PATH:$DOTNET_ROOT/tools
 
-alias ls='ls --color=auto'
+alias ls='eza --all --show-symlinks --icons=always --long --total-size'
 alias grep='grep --color=auto'
-alias ll="ls -la"
 alias cd="z"
 alias cdi="zi"
 alias lg=lazygit
 alias mux=tmuxinator
 alias ff=fastfetch
 alias lzd=lazydocker
-
-alias nvim-bare="NVIM_APPNAME=nvim/bare nvim"
-alias nvim-lazy="NVIM_APPNAME=nvim/lazynvim nvim"
-alias nvim-my="NVIM_APPNAME=nvim/my nvim"
 
 eval "$(fzf --bash)"
 eval "$(zoxide init bash)"
