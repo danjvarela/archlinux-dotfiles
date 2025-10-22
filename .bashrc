@@ -23,7 +23,8 @@ export PATH=$PATH:$HOME/Documents/work/bin
 export PATH=$PATH:$DOTNET_ROOT
 export PATH=$PATH:$DOTNET_ROOT/tools
 
-alias ls='eza --all --show-symlinks --icons=always --long --total-size'
+alias ll='ls -la --color'
+alias lss='eza --all --show-symlinks --icons=always --long --total-size'
 alias grep='grep --color=auto'
 alias cd="z"
 alias cdi="zi"
