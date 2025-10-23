@@ -1,3 +1,7 @@
+function wktree {
+  git worktree add $1 danmar/$1
+}
+
 # cd from anywhere
 function cd_anything() {
   local file
