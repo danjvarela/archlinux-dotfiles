@@ -15,6 +15,8 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export NVIM_APPNAME=nvim/v2
 export CAPLINQ_CONTAINER_PATH=$HOME/Documents/work
 export DOTNET_ROOT=$HOME/.dotnet
+export TASKRC=$HOME/.config/taskwarrior/taskrc 
+export TASKDATA=$HOME/.config/taskwarrior/data
 
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:$ANDROID_HOME/emulator
