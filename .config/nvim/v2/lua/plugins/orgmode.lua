@@ -63,7 +63,7 @@ return {
 			org_blank_before_new_entry = { heading = false, plain_list_item = false },
 			org_startup_folded = "overview",
 			notifications = {
-				enabled = true,
+				enabled = false,
 				reminder_time = { 0, 5, 10 },
 				notifier = function(tasks)
 					local result = {}
