@@ -54,6 +54,12 @@ local function copy_absolute_path()
 	vim.notify("Copied: " .. filepath, vim.log.levels.INFO)
 end
 
+local function edit_work_notes()
+	local path = vim.fn.expand("~/.wiki/work.wiki")
+	-- open the file in the current window
+	vim.cmd("edit " .. vim.fn.fnameescape(path))
+end
+
 -- Create the commands
 vim.api.nvim_create_user_command("CopyRelativePath", copy_relative_path, {
 	desc = "Copy current buffer path relative to project root",
@@ -61,4 +67,8 @@ vim.api.nvim_create_user_command("CopyRelativePath", copy_relative_path, {
 
 vim.api.nvim_create_user_command("CopyAbsolutePath", copy_absolute_path, {
 	desc = "Copy current buffer absolute path",
+})
+
+vim.api.nvim_create_user_command("WorkNotes", edit_work_notes, {
+	desc = "Edit work notes",
 })
