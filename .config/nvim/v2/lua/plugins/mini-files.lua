@@ -1,6 +1,7 @@
 return {
 	"nvim-mini/mini.files",
 	version = "*",
+	enabled = false,
 	dependencies = { "folke/snacks.nvim" },
 	opts = {
 		options = {

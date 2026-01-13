@@ -6,6 +6,7 @@ vim.lsp.enable("jsonls")
 vim.lsp.enable("css_ls")
 vim.lsp.enable("marksman")
 vim.lsp.enable("tailwindcss-ls")
+vim.lsp.enable("svelte-language-server")
 
 local icons = {
 	diagnostics = {
