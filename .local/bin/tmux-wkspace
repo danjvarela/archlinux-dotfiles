@@ -9,6 +9,7 @@ fi
 tmux kill-pane -a
 
 tmux split-window -h                 # split right
-tmux split-window -v -t 0            # split bottom of the left pane
+tmux split-window -v            # split bottom of the current pane
 
-tmux select-layout '101f,237x60,0,0{161x60,0,0[161x49,0,0,4,161x10,0,50,10],75x60,162,0,6}'
+# tmux select-layout '101f,237x60,0,0{161x60,0,0[161x49,0,0,4,161x10,0,50,10],75x60,162,0,6}'
+tmux select-layout '1542,237x57,0,0{181x57,0,0,22,55x57,182,0[55x28,182,0,25,55x28,182,29,26]}'
