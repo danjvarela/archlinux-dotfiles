@@ -97,23 +97,6 @@ return {
 					-- we don't want to debug code inside node_modules, so skip it!
 					skipFiles = { "${workspaceFolder}/node_modules/**/*.js" },
 				},
-				{
-					type = "pwa-chrome",
-					request = "launch",
-					name = "Launch Chrome to debug client side code",
-					url = function()
-						return vim.fn.input("Enter URL: ", "http://localhost:5173")
-					end,
-					-- for TypeScript/Svelte
-					sourceMaps = true,
-					webRoot = "${workspaceFolder}/src",
-					protocol = "inspector",
-					port = function()
-						return tonumber(vim.fn.input("Enter port: ", "9222"))
-					end,
-					-- skip files from vite's hmr
-					skipFiles = { "**/node_modules/**/*", "**/@vite/*", "**/src/client/*", "**/src/*" },
-				},
 			}
 		end
 		local dap, dapview = require("dap"), require("dap-view")
