@@ -71,6 +71,16 @@ return {
 			},
 		}
 
+		require("dap").adapters["pwa-msedge"] = {
+			type = "server",
+			host = "localhost",
+			port = "${port}",
+			executable = {
+				command = vim.fs.joinpath(vim.fn.stdpath("data"), "mason", "bin", "js-debug-adapter"),
+				args = { "${port}" },
+			},
+		}
+
 		for _, language in ipairs({ "typescript", "javascript", "svelte" }) do
 			require("dap").configurations[language] = {
 				{
@@ -96,6 +106,20 @@ return {
 					cwd = "${workspaceFolder}/src",
 					-- we don't want to debug code inside node_modules, so skip it!
 					skipFiles = { "${workspaceFolder}/node_modules/**/*.js" },
+				},
+				{
+					type = "pwa-msedge",
+					request = "attach",
+					name = "Attach to Edge debugging instance",
+					port = function()
+						return tonumber(vim.fn.input("Enter remote debugging port: ", "9222"))
+					end,
+					url = function()
+						return vim.fn.input("Enter URL to debug: ", "https://localhost:4200")
+					end,
+					webRoot = "${workspaceFolder}/src",
+					sourceMaps = true,
+					skipFiles = { "**/node_modules/**/*", "**/@vite/*", "**/src/client/*", "**/src/*" },
 				},
 			}
 		end
