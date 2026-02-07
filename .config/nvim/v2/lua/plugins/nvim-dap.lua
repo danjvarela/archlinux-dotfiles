@@ -81,48 +81,26 @@ return {
 			},
 		}
 
-		for _, language in ipairs({ "typescript", "javascript", "svelte" }) do
-			require("dap").configurations[language] = {
-				{
-					-- adapter to use
-					type = "pwa-node",
-					-- launch a new process
-					request = "launch",
-					name = "Launch current file in new node process",
-					program = "${file}",
-				},
-				{
-					type = "pwa-node",
-					-- attach to an already running node process with --inspect flag, default port: 9229
-					request = "attach",
-					-- allows us to pick the proces using a picker
-					processId = require("dap.utils").pick_process,
-					name = "Attach debugger to exising `node --inspect` process",
-					-- for compiled languages like Typescript or Svelte
-					sourceMaps = true,
-					-- resolve source maps in nested locations while ignoring node_modules
-					resolveSourceMapLocations = { "${workspaceFolder}/**", "!**/node_modules/**" },
-					-- path to src in vite based projects (and most other projects as well)
-					cwd = "${workspaceFolder}/src",
-					-- we don't want to debug code inside node_modules, so skip it!
-					skipFiles = { "${workspaceFolder}/node_modules/**/*.js" },
-				},
-				{
-					type = "pwa-msedge",
-					request = "attach",
-					name = "Attach to Edge debugging instance",
-					port = function()
-						return tonumber(vim.fn.input("Enter remote debugging port: ", "9222"))
-					end,
-					url = function()
-						return vim.fn.input("Enter URL to debug: ", "https://localhost:4200")
-					end,
-					webRoot = "${workspaceFolder}/src",
-					sourceMaps = true,
-					skipFiles = { "**/node_modules/**/*", "**/@vite/*", "**/src/client/*", "**/src/*" },
-				},
-			}
-		end
+		require("dap").adapters["pwa-chrome"] = {
+			type = "server",
+			host = "localhost",
+			port = "${port}",
+			executable = {
+				command = vim.fs.joinpath(vim.fn.stdpath("data"), "mason", "bin", "js-debug-adapter"),
+				args = { "${port}" },
+			},
+		}
+
+		require("dap").adapters["node-terminal"] = {
+			type = "server",
+			host = "localhost",
+			port = "${port}",
+			executable = {
+				command = vim.fs.joinpath(vim.fn.stdpath("data"), "mason", "bin", "js-debug-adapter"),
+				args = { "${port}" },
+			},
+		}
+
 		local dap, dapview = require("dap"), require("dap-view")
 		dap.listeners.after.event_initialized["dapui_config"] = function()
 			dapview.open()
