@@ -4,7 +4,7 @@ return {
     '--stdio'
   },
   filetypes = {
-    'astro',
+    -- 'astro',
     'css',
     'eruby',
     'html',

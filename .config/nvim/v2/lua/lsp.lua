@@ -1,3 +1,4 @@
+vim.lsp.enable("astro")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("vtsls")
 vim.lsp.enable("roslyn_ls")
