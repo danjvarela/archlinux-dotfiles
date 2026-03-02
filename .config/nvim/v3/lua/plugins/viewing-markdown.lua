@@ -3,4 +3,5 @@ vim.pack.add({
 })
 require("render-markdown").setup({
 	enabled = false,
+  preset = "obsidian"
 })
