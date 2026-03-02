@@ -3,10 +3,30 @@ local M = {}
 function M.get_typescript_server_path(root_dir)
 	local project_roots = vim.fs.find("node_modules", { path = root_dir, upward = true, limit = math.huge })
 	for _, project_root in ipairs(project_roots) do
+		-- Standard npm/yarn layout: node_modules/typescript
 		local typescript_path = project_root .. "/typescript"
 		local stat = vim.loop.fs_stat(typescript_path)
 		if stat and stat.type == "directory" then
 			return typescript_path .. "/lib"
+		end
+
+		-- pnpm virtual store layout: node_modules/.pnpm/typescript@<version>/node_modules/typescript
+		local pnpm_store = project_root .. "/.pnpm"
+		local pnpm_stat = vim.loop.fs_stat(pnpm_store)
+		if pnpm_stat and pnpm_stat.type == "directory" then
+			local handle = vim.loop.fs_scandir(pnpm_store)
+			if handle then
+				while true do
+					local name, ftype = vim.loop.fs_scandir_next(handle)
+					if not name then break end
+					if (ftype == "directory" or ftype == "link") and name:match("^typescript@") then
+						local candidate = pnpm_store .. "/" .. name .. "/node_modules/typescript/lib"
+						if vim.loop.fs_stat(candidate) then
+							return candidate
+						end
+					end
+				end
+			end
 		end
 	end
 	return ""
