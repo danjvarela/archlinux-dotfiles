@@ -1,2 +1,3 @@
 .bashrc
-.config/taskwarrior/taskrc
+.config/taskwarrior/data/*
+.config/taskwarrior/work-data/*
