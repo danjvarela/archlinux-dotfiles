@@ -1,7 +1,16 @@
 vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(ev)
 		local name, kind = ev.data.spec.name, ev.data.kind
-		if name == "avante.nvim" and (kind == "install" or kind == "update") then
+		if name == "mcphub.nvim" and (kind == "install" or kind == "update") then
+			local path = ev.data.path
+			vim.system({ "nvim", "--headless", "-l", path .. "/bundled_build.lua" }, { text = true }, function(result)
+				if result.code ~= 0 then
+					vim.schedule(function()
+						vim.notify("mcphub.nvim build failed:\n" .. result.stderr, vim.log.levels.ERROR)
+					end)
+				end
+			end)
+		elseif name == "avante.nvim" and (kind == "install" or kind == "update") then
 			local path = ev.data.path
 			vim.system({ "make", "-C", path }, { text = true }, function(result)
 				if result.code ~= 0 then
@@ -26,6 +35,7 @@ require("mcphub").setup({
 	workspace = {
 		enabled = true,
 	},
+	use_bundled_binary = true,
 })
 
 require("copilot").setup({})
