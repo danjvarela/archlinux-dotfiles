@@ -33,6 +33,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       -- stylua: ignore start
 			map("n", "gk", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
 			map("i", "<c-k>", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
+			map("i", "<c-space>", function() vim.lsp.completion.get() end, { desc = "Signature Help" })
 
 			map(
 			  { "n", "v" },
