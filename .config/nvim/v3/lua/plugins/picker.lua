@@ -5,12 +5,14 @@ vim.pack.add({
 	},
 })
 
-require("mini.pick").setup()
+require("mini.pick").setup({})
 
 local map = vim.keymap.set
 
 map({ "n", "v" }, "<leader>ff", function()
-	MiniPick.builtin.files()
+	MiniPick.builtin.files({
+    tool = "git"
+  })
 end, { desc = "Find files" })
 
 map({ "n", "v" }, "<leader>fw", function()

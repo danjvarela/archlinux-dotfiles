@@ -1,15 +1,10 @@
 vim.pack.add({
-	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
-})
-require("render-markdown").setup({
-	enabled = false,
-	preset = "obsidian",
-  anti_conceal = {
-    enabled = false
-  }
+	"https://github.com/OXY2DEV/markview.nvim",
 })
 
-local render_markdown = require("render-markdown")
-
-vim.keymap.set("n", "<leader>mm", render_markdown.buf_toggle, { desc = "View markdown" })
-vim.keymap.set("n", "<leader>mp", render_markdown.preview, { desc = "View markdown (Split)" })
+require("markview").setup({
+	preview = {
+		icon_provider = "mini",
+		filetypes = { "markdown", "codecompanion" },
+	},
+})

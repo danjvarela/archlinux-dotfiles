@@ -26,25 +26,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
 		if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
-			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-
 			local map = vim.keymap.set
 
       -- stylua: ignore start
 			map("n", "gk", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
 			map("i", "<c-k>", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
-			map("i", "<c-space>", function() vim.lsp.completion.get() end, { desc = "Signature Help" })
 
-			map(
-			  { "n", "v" },
-			  "<leader>co",
-			  function()
-          vim.lsp.buf.code_action({ apply = true, context = { only = { 'source.organizeImports' }, diagnostics = {}, }, })
-        end,
-			  { desc = "Organize Imports" }
-			)
-
-			map({ "n", "v" }, "<leader>cc",function() vim.lsp.codelens.run() end, { desc = "Codelens" })
+			map({ "n", "v" }, "grc",function() vim.lsp.codelens.run() end, { desc = "Codelens" })
 			-- stylua: ignore end
 		end
 	end,
