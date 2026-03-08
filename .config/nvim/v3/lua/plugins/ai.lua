@@ -43,6 +43,13 @@ require("codecompanion").setup({
 			fold_context = true,
 		},
 	},
+	prompt_library = {
+		markdown = {
+			dirs = {
+				vim.fn.stdpath("config") .. "/prompts",
+			},
+		},
+	},
 	extensions = {
 		mcphub = {
 			callback = "mcphub.extensions.codecompanion",
