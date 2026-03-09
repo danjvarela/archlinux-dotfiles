@@ -106,5 +106,7 @@ tkill() {
 
 sws() {
   local current_directory_name=$(basename "$PWD")
-  tmuxinator start default -n "$current_directory_name" .
+  # Replace all '.' with '-', remove leading/trailing '.'
+  local formatted_name=$(echo "$current_directory_name" | sed 's/\./-/g; s/^-//; s/-$//')
+  tmuxinator start default -n "$formatted_name" .
 }
