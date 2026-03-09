@@ -3,14 +3,14 @@
     "prefix": "_new",
     "body": [
       "---",
-      "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      "date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
       "tags:",
       "references:",
       "---",
       "",
-      "# $1",
+      "# ${1:Title}",
       "",
-      "$0"
+      "${0}"
     ],
     "description": "New markdown note with frontmatter"
   },
@@ -18,12 +18,12 @@
     "prefix": "_journal",
     "body": [
       "---",
-      "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      "date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
       "---",
       "",
-      "# $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      "# ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
       "",
-      "$0"
+      "${0}"
     ],
     "description": "New journal entry"
   }
