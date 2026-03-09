@@ -1,7 +1,6 @@
 vim.lsp.enable({
 	"astro",
 	"lua",
-	"paths-buffers-snippets",
 	"csharp",
 	"css",
 	"css-variables",

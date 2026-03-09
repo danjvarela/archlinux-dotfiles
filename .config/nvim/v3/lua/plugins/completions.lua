@@ -6,6 +6,7 @@ vim.pack.add({
 require("blink.cmp").setup({
 	keymap = { preset = "default" },
 	appearance = { nerd_font_variant = "mono" },
+  snippets = { preset = "mini_snippets" },
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer" },
 		per_filetype = {

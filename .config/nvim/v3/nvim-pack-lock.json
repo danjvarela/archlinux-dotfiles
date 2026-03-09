@@ -27,6 +27,11 @@
       "src": "https://github.com/folke/flash.nvim",
       "version": "2.1.0 - 3.0.0"
     },
+    "friendly-snippets": {
+      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
+      "src": "https://github.com/rafamadriz/friendly-snippets",
+      "version": "'main'"
+    },
     "fyler.nvim": {
       "rev": "bb8b9f30c652c948d35211958b0deec3496bcc08",
       "src": "https://github.com/A7Lavinraj/fyler.nvim",
@@ -93,6 +98,11 @@
       "rev": "8521fe21df86e08d9e4b3c3f3a7d50e47954e1af",
       "src": "https://github.com/nvim-mini/mini.pick",
       "version": "'main'"
+    },
+    "mini.snippets": {
+      "rev": "b4065ca6b33e4df2897672d3bb760cfc93f4390a",
+      "src": "https://github.com/nvim-mini/mini.snippets",
+      "version": "0.17.0 - 0.18.0"
     },
     "mini.splitjoin": {
       "rev": "8112e794cbb022b9d4b7af60b64e9896930f1697",

@@ -1,0 +1,30 @@
+{
+  "New Note": {
+    "prefix": "_new",
+    "body": [
+      "---",
+      "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      "tags:",
+      "references:",
+      "---",
+      "",
+      "# $1",
+      "",
+      "$0"
+    ],
+    "description": "New markdown note with frontmatter"
+  },
+  "New Journal Entry": {
+    "prefix": "_journal",
+    "body": [
+      "---",
+      "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      "---",
+      "",
+      "# $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      "",
+      "$0"
+    ],
+    "description": "New journal entry"
+  }
+}
