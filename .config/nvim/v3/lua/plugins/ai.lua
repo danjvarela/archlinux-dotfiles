@@ -35,7 +35,37 @@ require("mcphub").setup({
 require("copilot").setup({})
 
 require("codecompanion").setup({
+	rules = {
+		default = {
+			description = "Collection of common files for all projects",
+			files = {
+				".clinerules",
+				".cursorrules",
+				".goosehints",
+				".rules",
+				".windsurfrules",
+				".github/copilot-instructions.md",
+				"AGENT.md",
+				"AGENTS.md",
+				{ path = "CLAUDE.md", parser = "claude" },
+				{ path = "CLAUDE.local.md", parser = "claude" },
+				{ path = "~/.claude/CLAUDE.md", parser = "claude" },
+			},
+			is_preset = true,
+		},
+		opts = {
+			chat = {
+				autoload = "default",
+				enabled = true,
+			},
+		},
+	},
 	display = {
+		action_palette = {
+			opts = {
+				show_prompt_library_builtins = false,
+			},
+		},
 		chat = {
 			icons = {
 				chat_context = "📎️", -- You can also apply an icon to the fold
