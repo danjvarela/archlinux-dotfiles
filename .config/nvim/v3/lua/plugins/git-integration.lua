@@ -1,5 +1,9 @@
 vim.pack.add({
-	"https://github.com/lewis6991/gitsigns.nvim",
+	{
+		src = "https://github.com/lewis6991/gitsigns.nvim",
+		version = vim.version.range("^v2.0.0"),
+	},
+	"https://github.com/kdheepak/lazygit.nvim",
 })
 
 require("gitsigns").setup({
@@ -56,3 +60,5 @@ require("gitsigns").setup({
       map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
 	end,
 })
+
+vim.keymap.set({ "n", "v" }, "<leader>gg", "<cmd>LazyGit<cr>", { desc = "Open lazygit" })
