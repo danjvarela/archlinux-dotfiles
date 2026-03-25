@@ -10,6 +10,32 @@ return {
 		"typescript",
 		"typescriptreact",
 		"typescript.tsx",
+		"astro",
+	},
+	capabilities = {
+		workspace = {
+			didChangeWatchedFiles = {
+				dynamicRegistration = true,
+			},
+		},
+	},
+	settings = {
+		vtsls = {
+			autoUseWorkspaceTsdk = true,
+			tsserver = {
+				globalPlugins = {
+					{
+						name = "@astrojs/ts-plugin",
+						enableForWorkspaceTypeScriptVersions = true,
+					},
+				},
+			},
+		},
+		typescript = {
+			tsserver = {
+				pluginPaths = { "./node_modules" },
+			},
+		},
 	},
 	root_dir = function(bufnr, on_dir)
 		-- The project root is where the LSP can be started from
