@@ -1,5 +1,6 @@
 vim.pack.add({
-	"https://github.com/OXY2DEV/markview.nvim",
+	{ src = "https://github.com/OXY2DEV/markview.nvim", version = vim.version.range("^v28.1.0") },
+	{ src = "https://github.com/obsidian-nvim/obsidian.nvim", version = vim.version.range("^v3.16.0") },
 })
 
 require("markview").setup({
@@ -40,6 +41,16 @@ require("markview").setup({
 					hl = "MarkviewIcon3",
 				},
 			},
+		},
+	},
+})
+
+require("obsidian").setup({
+	legacy_commands = false,
+	workspaces = {
+		{
+			name = "personal",
+			path = "~/.second-brain",
 		},
 	},
 })
