@@ -16,8 +16,9 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 vim.pack.add({
 	{ src = "https://github.com/zbirenbaum/copilot.lua" },
-	{ src = "https://github.com/ravitemer/mcphub.nvim", version = vim.version.range("^v6.2.0") },
-	{ src = "https://www.github.com/olimorris/codecompanion.nvim", version = vim.version.range("^19.1.0") },
+	-- { src = "https://github.com/ravitemer/mcphub.nvim", version = vim.version.range("^v6.2.0") },
+	{ src = "https://www.github.com/olimorris/codecompanion.nvim", version = vim.version.range("^19.7.0") },
+	"https://github.com/bahaaza/mcphub.nvim",
 })
 
 require("mcphub").setup({
