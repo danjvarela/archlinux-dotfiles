@@ -53,4 +53,10 @@ require("obsidian").setup({
 			path = "~/.second-brain",
 		},
 	},
+
+	note_id_func = require("obsidian.builtin").title_id,
+
+	daily_notes = {
+		folder = "dailies",
+	},
 })
