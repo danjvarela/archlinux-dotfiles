@@ -10,6 +10,7 @@ vim.lsp.enable({
 	"tailwind",
 	"typescript",
 	"eslint",
+	"bsl",
 })
 
 local icons = {

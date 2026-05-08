@@ -4,6 +4,7 @@ vim.pack.add({
 		version = vim.version.range("^v2.0.0"),
 	},
 	"https://github.com/kdheepak/lazygit.nvim",
+	"https://github.com/pwntester/octo.nvim",
 })
 
 require("gitsigns").setup({
@@ -62,3 +63,7 @@ require("gitsigns").setup({
 })
 
 vim.keymap.set({ "n", "v" }, "<leader>gg", "<cmd>LazyGit<cr>", { desc = "Open lazygit" })
+
+require("octo").setup({
+	picker = "default",
+})

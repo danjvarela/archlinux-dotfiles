@@ -159,6 +159,10 @@
       "src": "https://github.com/obsidian-nvim/obsidian.nvim",
       "version": "3.16.0 - 4.0.0"
     },
+    "octo.nvim": {
+      "rev": "34e67cc2d247e9b9271e2b54baeb6d4f6d1035bb",
+      "src": "https://github.com/pwntester/octo.nvim"
+    },
     "plenary.nvim": {
       "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
       "src": "https://github.com/nvim-lua/plenary.nvim"
