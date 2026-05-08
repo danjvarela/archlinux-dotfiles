@@ -5,10 +5,11 @@
 [difftool]
 	prompt = false
 
-[diff]
-	tool = nvimdiff
+[difftool "nvim_difftool"]
+  cmd = nvim -c \"packadd nvim.difftool\" -d \"$LOCAL\" \"$REMOTE\"
 
-[difftool "nvimdiff"]
-	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+[diff]
+  tool = nvim_difftool
+
 [core]
 	autocrlf = input
