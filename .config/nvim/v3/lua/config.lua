@@ -62,3 +62,5 @@ opt.pumheight = 10
 -- global variables
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+
+require('vim._core.ui2').enable()

@@ -1,107 +1,92 @@
-vim.api.nvim_create_autocmd("PackChanged", {
-	callback = function(ev)
-		local name, kind = ev.data.spec.name, ev.data.kind
-		if name == "mcphub.nvim" and (kind == "install" or kind == "update") then
-			local path = ev.data.path
-			vim.system({ "nvim", "--headless", "-l", path .. "/bundled_build.lua" }, { text = true }, function(result)
-				if result.code ~= 0 then
-					vim.schedule(function()
-						vim.notify("mcphub.nvim build failed:\n" .. result.stderr, vim.log.levels.ERROR)
-					end)
-				end
-			end)
-		end
-	end,
-})
-
 vim.pack.add({
-	{ src = "https://github.com/zbirenbaum/copilot.lua" },
-	-- { src = "https://github.com/ravitemer/mcphub.nvim", version = vim.version.range("^v6.2.0") },
-	{ src = "https://www.github.com/olimorris/codecompanion.nvim", version = vim.version.range("^19.7.0") },
-	"https://github.com/bahaaza/mcphub.nvim",
+	{ src = "https://github.com/ray-x/copilot-agent.nvim", version = "latest" },
 })
 
-require("mcphub").setup({
-	workspace = {
-		enabled = true, -- Default: true
-		look_for = { ".mcphub/servers.json", ".vscode/mcp.json", ".cursor/mcp.json" },
-		reload_on_dir_changed = true, -- Auto-switch on directory change
-		port_range = { min = 40000, max = 41000 }, -- Port range for workspace hubs
-		get_port = nil, -- Optional function for custom port assignment
+require("copilot_agent").setup({
+	-- When auto_start=true the plugin connects to the shared Go service if
+	-- one already exists, otherwise it starts exactly one and reads its
+	-- port from stderr automatically. No manual base_url needed.
+	-- base_url = "http://127.0.0.1:8088", -- only for externally-started services
+	client_name = "nvim-copilot",
+	permission_mode = "interactive", -- "interactive" | "approve-all" | "autopilot" | "reject-all"
+	auto_create_session = true,
+	lsp = {
+		enabled = true, -- start the helper LSP automatically from setup()
 	},
-	use_bundled_binary = true,
+	session = {
+		working_directory = function()
+			return vim.fn.getcwd()
+		end,
+		model = nil, -- nil = Copilot picks a default
+		agent = nil, -- nil = "default"; or "coding", "gpt-4.1", a custom agent name
+		streaming = true,
+		enable_config_discovery = true, -- respects .github/copilot-instructions.md etc.
+		replay_permission_history = false, -- false (default) skips permission replay on resume for faster session loads
+		history_turn_limit = 256, -- only replay the most recent N turns when opening a large session
+		history_activity_turn_limit = 64, -- keep detailed activity only for the most recent N turns (<= history_turn_limit)
+		history_preview_chars = 120, -- truncation length for summarized historical activity/tool outputs
+		auto_resume = "prompt", -- "prompt" (default) | "auto" — when multiple sessions exist
+	},
+	service = {
+		auto_start = true,
+		-- command = nil means auto: uses <plugin_root>/bin/copilot-agent if present,
+		-- otherwise falls back to { "go", "run", "." } (requires Go toolchain).
+		command = { "go", "run", ".", "-cli-path", "/usr/lib/node_modules/@github/copilot/index.js" },
+		cwd = nil, -- defaults to <plugin_root>/server
+		detach = true, -- default: reuse one detached background service across Neovim instances
+		port_range = nil, -- e.g. "18000-19000" for fixed range
+		startup_timeout_ms = 15000,
+		startup_poll_interval_ms = 250,
+	},
+	chat = {
+		title = "Copilot Chat",
+		system_notify_timeout = 3000, -- ms before auto-clearing transient notices
+		render_markdown = true, -- set false to disable render-markdown.nvim (faster on long playbacks)
+		protect_markdown_buffer = true, -- upstream Neovim Treesitter workaround for the prompt buffer; set false to disable
+		diff_cmd = { "delta" }, -- external diff viewer; false = builtin float
+		diff_review = true, -- offer vimdiff after agent modifies a git-tracked file; clean buffers auto-reload, conflicting modified buffers prompt before reload
+		activity_view = "hover", -- 'hover' (default) opens a read-only preview via K (or CursorHold when enabled); 'diff' opens editable file diffs on <CR>; 'raw' keeps the patch-text viewer
+		activity_diff_tool = "native", -- 'native', 'diffview', 'fugitive', or a custom Vim command name
+		-- Hover & preview controls:
+		-- activity_hover_key: string (default: 'K') - key to toggle the read-only hover preview when activity_view='hover' while keeping focus in chat.
+		-- activity_hover_focus_key: string (default: 'gK') - key to move focus into the current hover preview (opens it first if needed).
+		-- activity_hover_cursor_hold: boolean (default: false) - when true, show hover on CursorHold/CursorHoldI instead of the hover key.
+		-- activity_hover_timeout_ms: number (default: 2500) - auto-close timeout for hover preview in milliseconds (<=0 disables auto-close).
+	},
+	prompt = {
+		style = "warm", -- "cold" (default) = red-violet/violet/blue, "warm" = red/yellow/green
+	},
+	compose = {
+		width = 0.4, -- left split width; fraction of chat width, or absolute columns
+		min_width = 40,
+		max_width = 100,
+		promote_keymap = "<leader>cc", -- set false to disable the prompt-buffer promotion mapping
+	},
+	statusline = {
+		enabled = false, -- default: keep plugin-owned chat/input local statuslines disabled
+		components = { -- default: all true
+			mode = true,
+			permission = true,
+			busy = true,
+			session = true,
+			model = true,
+			tool = true,
+			intent = true,
+			context = true,
+			config = true,
+			attachments = true,
+			help = true,
+		},
+	},
+	notify = true, -- set false to silence all [copilot-agent] vim.notify calls
+	file_log_level = "WARN", -- TRACE | DEBUG | INFO | WARN | ERROR; TRACE logs raw host/session payloads, DEBUG logs plugin actions and HTTP details to stdpath("log") .. "/copilot_agent.log"
+	file_log_batch = {
+		enabled = true, -- queue file-log writes and flush in batches
+		flush_interval_ms = 2000, -- flush pending log lines at least every 2 seconds
+		max_entries = 20, -- flush immediately when queue reaches this size
+	},
 })
 
-require("copilot").setup({})
-
-require("codecompanion").setup({
-	rules = {
-		default = {
-			description = "Collection of common files for all projects",
-			files = {
-				".clinerules",
-				".cursorrules",
-				".goosehints",
-				".rules",
-				".windsurfrules",
-				".github/copilot-instructions.md",
-				"AGENT.md",
-				"AGENTS.md",
-				{ path = "CLAUDE.md", parser = "claude" },
-				{ path = "CLAUDE.local.md", parser = "claude" },
-				{ path = "~/.claude/CLAUDE.md", parser = "claude" },
-			},
-			is_preset = true,
-		},
-		opts = {
-			chat = {
-				autoload = "default",
-				enabled = true,
-			},
-		},
-	},
-	display = {
-		action_palette = {
-			opts = {
-				show_preset_prompts = false,
-			},
-		},
-		chat = {
-			icons = {
-				chat_context = "📎️", -- You can also apply an icon to the fold
-			},
-			fold_context = true,
-		},
-	},
-	prompt_library = {
-		markdown = {
-			dirs = {
-				vim.fn.stdpath("config") .. "/prompts",
-			},
-		},
-	},
-	extensions = {
-		mcphub = {
-			callback = "mcphub.extensions.codecompanion",
-			opts = {
-				-- MCP Tools
-				make_tools = true, -- Make individual tools (@server__tool) and server groups (@server) from MCP servers
-				show_server_tools_in_chat = true, -- Show individual tools in chat completion (when make_tools=true)
-				add_mcp_prefix_to_tool_names = true, -- Add mcp__ prefix (e.g `@mcp__github`, `@mcp__neovim__list_issues`)
-				show_result_in_chat = true, -- Show tool results directly in chat buffer
-				format_tool = nil, -- function(tool_name:string, tool: CodeCompanion.Agent.Tool) : string Function to format tool names to show in the chat buffer
-				-- MCP Resources
-				make_vars = true, -- Convert MCP resources to #variables for prompts
-				-- MCP Prompts
-				make_slash_commands = true, -- Add MCP prompts as /slash commands
-			},
-		},
-	},
-})
-
-vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<leader>ct", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
-
--- Expand 'cc' into 'CodeCompanion' in the command line
-vim.cmd([[cab cc CodeCompanion]])
+vim.keymap.set("n", "<leader>cc", function()
+  vim.cmd("CopilotAgentNewSession")
+end, { desc = "Open CopilotAgentChat" })
