@@ -69,6 +69,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		"typescriptreact",
 		"typescript",
 		"yaml",
+    "bash",
 	},
 	callback = function()
 		vim.treesitter.start()
