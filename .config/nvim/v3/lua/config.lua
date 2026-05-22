@@ -14,6 +14,7 @@ opt.fillchars = {
 }
 opt.laststatus = 3 -- always show status line and only on the last window
 opt.winborder = "rounded"
+opt.conceallevel = 2
 
 -- cursor settings
 opt.guicursor = "" -- fat cursor no matter the mode
