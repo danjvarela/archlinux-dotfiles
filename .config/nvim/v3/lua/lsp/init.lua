@@ -31,9 +31,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
       -- stylua: ignore start
 			map("n", "gk", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
 			map("i", "<c-k>", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
-
-			map({ "n", "v" }, "grc",function() vim.lsp.codelens.run() end, { desc = "Codelens" })
 			-- stylua: ignore end
+		end
+
+		local function codelens_supported()
+			for _, c in ipairs(vim.lsp.get_clients({ bufnr = ev.buf })) do
+				if c.server_capabilities and c.server_capabilities.codeLensProvider then
+					return true
+				end
+			end
+			return false
+		end
+
+		if codelens_supported() then
+			vim.lsp.codelens.enable(true)
 		end
 	end,
 })
