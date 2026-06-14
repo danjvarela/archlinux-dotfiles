@@ -7,6 +7,7 @@ local fyler = require("fyler")
 fyler.setup({
 	views = {
 		finder = {
+			close_on_select = false,
 			win = {
 				kinds = {
 					split_left_most = {
