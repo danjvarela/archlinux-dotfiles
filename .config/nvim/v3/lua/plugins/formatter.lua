@@ -18,6 +18,7 @@ require("conform").setup({
 		yaml = { "prettierd" },
 		markdown = { "prettierd" },
 		["markdown.mdx"] = { "prettierd" },
+		nix = { "nixfmt" },
 	},
 	default_format_opts = {
 		-- default to the lsp if no formatter is available

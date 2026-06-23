@@ -5,12 +5,13 @@ vim.lsp.enable({
 	"css",
 	"css-variables",
 	"json",
-	"markdown",
+	-- "markdown",
 	"svelte",
 	"tailwind",
 	"typescript",
 	"eslint",
 	"bsl",
+  "nix"
 })
 
 local icons = {

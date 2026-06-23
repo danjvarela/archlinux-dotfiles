@@ -46,6 +46,10 @@
       "src": "https://github.com/hakonharnes/img-clip.nvim",
       "version": "0.6.0 - 0.7.0"
     },
+    "lazydotnet.nvim": {
+      "rev": "cea0708a07d1c727d5d0068e823eec79e63a0fa6",
+      "src": "https://github.com/ckob/lazydotnet.nvim"
+    },
     "lazygit.nvim": {
       "rev": "a04ad0dbc725134edbee3a5eea29290976695357",
       "src": "https://github.com/kdheepak/lazygit.nvim"
